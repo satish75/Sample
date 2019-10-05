@@ -1,0 +1,7 @@
+C:\Users\Admin\Desktop\Satya\DataStructurePrograms\DataStructurePrograms\bin\Debug\DataStructurePrograms.exe.config
+C:\Users\Admin\Desktop\Satya\DataStructurePrograms\DataStructurePrograms\bin\Debug\DataStructurePrograms.exe
+C:\Users\Admin\Desktop\Satya\DataStructurePrograms\DataStructurePrograms\bin\Debug\DataStructurePrograms.pdb
+C:\Users\Admin\Desktop\Satya\DataStructurePrograms\DataStructurePrograms\obj\Debug\DataStructurePrograms.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\Satya\DataStructurePrograms\DataStructurePrograms\obj\Debug\DataStructurePrograms.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Satya\DataStructurePrograms\DataStructurePrograms\obj\Debug\DataStructurePrograms.exe
+C:\Users\Admin\Desktop\Satya\DataStructurePrograms\DataStructurePrograms\obj\Debug\DataStructurePrograms.pdb
