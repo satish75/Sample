@@ -1,46 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataStructurePrograms.LinkedListOperation;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Stack.cs" company="Bridgelabz">
+//   Copyright © 2019 Company
+// </copyright>
+// <creator name="Satish Dodake"/>
+// -----------------------------------------------------------------------------------
 namespace DataStructurePrograms.StackOperation
 {
-  
+    using System;
+    using DataStructurePrograms.LinkedListOperation;
+
+    /// <summary>
+    /// This is stack class.
+    /// </summary>
     public class Stack
     {
-        public static Node top;
-        public static Node prevTop;
+        /// <summary>
+        /// Push the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
         public static void Push(object item)
         {
-
-            if(LinkedListOperation.Utility.head==null)
+            if (LinkedListOperation.Utility.Head == null)
             {
                 LinkedList.Add(item);
-              
-          
             }
             else
             {
                 LinkedList.Add(item);
-              
             }
         }
 
+        /// <summary>
+        /// Pop this instance.
+        /// </summary>
         public static void Pop()
         {
-            if(LinkedListOperation.Utility.head == null)
+            if (LinkedListOperation.Utility.Head == null)
             {
-                return;           
+                return;
             }
             else
-            { 
+            {
                 LinkedList.Pop();
             }
         }
+
+        /// <summary>
+        /// Peek this instance.
+        /// </summary>
         public static void Peek()
         {
-            if(LinkedListOperation.Utility.head == null)
+            if (LinkedListOperation.Utility.Head == null)
             {
                 Console.WriteLine("Stack UnderFlow");
             }
@@ -50,9 +60,15 @@ namespace DataStructurePrograms.StackOperation
             }
         }
 
+        /// <summary>
+        /// Determine whether this instance is empty.
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if this instance is empty; otherwise, <c>false</c>.
+        /// </returns>
         public static bool IsEmpty()
         {
-            if(LinkedListOperation.Utility.head == null)
+            if (LinkedListOperation.Utility.Head == null)
             {
                 return true;
             }
@@ -61,9 +77,14 @@ namespace DataStructurePrograms.StackOperation
                 return false;
             }
         }
-       public static int Size()
+
+        /// <summary>
+        /// Size this instance.
+        /// </summary>
+        /// <returns>it return size</returns>
+        public static int Size()
         {
-          return LinkedList.Size();
-        } 
+            return LinkedList.Size();
+        }
     }
 }

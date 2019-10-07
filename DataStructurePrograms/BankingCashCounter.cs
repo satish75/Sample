@@ -1,41 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataStructurePrograms.QueueOperation;
-using DataStructurePrograms.LinkedListOperation;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BankingCashCounter.cs" company="Bridgelabz">
+//   Copyright © 2019 Company
+// </copyright>
+// <creator name="Satish Dodake"/>
+// -----------------------------------------------------------------------------------
 namespace DataStructurePrograms
 {
+    using System;
+    using DataStructurePrograms.LinkedListOperation;
+    using DataStructurePrograms.QueueOperation;
+
+    /// <summary>
+    /// This is Banking Cash Counter class.
+    /// </summary>
     public class BankingCashCounter
     {
-        static int bankBalance = 100000;
+        /// <summary>
+        /// The bank balance available of bank.
+        /// </summary>
+        private static int bankBalance = 100000;
+
+        /// <summary>
+        /// Banking the counter.
+        /// </summary>
         public static void BankingCounter()
         {
-           
             Console.WriteLine("Enter how Many User Do You Want ");
             int numberOfUser = Convert.ToInt32(Console.ReadLine());
             string userName;
             char again;
-            for(int i=1;i<=numberOfUser;i++)
+            for (int i = 1; i <= numberOfUser; i++)
             {
                 Console.WriteLine("Enter User Name ");
                 userName = Console.ReadLine();
                 Queue.Enqueue(userName);
             }
-            for(int j=1;j<=numberOfUser;j++)
+
+            for (int j = 1; j <= numberOfUser; j++)
             {
                 object data = Queue.Dequeue();
                 userName = data.ToString();
                 Console.WriteLine("**********************************");
-                Console.WriteLine(" User :"+userName);
+                Console.WriteLine(" User :" + userName);
                 do
                 {
-                   
                     Console.WriteLine("1. Withdrawal\n" + "2.Deposite\n" + "3. Remaining Users");
                     Console.WriteLine("Enter Your Choice To Run Operation ");
                     int choice = Convert.ToInt32(Console.ReadLine());
-
                     switch (choice)
                     {
                         case 1:
@@ -53,14 +64,16 @@ namespace DataStructurePrograms
                             LinkedList.Print();
                             break;
                     }
+
                     Console.WriteLine("\nDo You want To Continue the Press 'Y' Or 'N' ");
                     again = Console.ReadLine()[0];
                 }
                 while (again == 'Y' || again == 'y');
+
                 Console.WriteLine("*********************************** ");
             }
+
             Console.WriteLine("Available Bank Balance  " + bankBalance);
-            
         }
     }
 }

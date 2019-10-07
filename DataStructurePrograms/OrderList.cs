@@ -1,15 +1,23 @@
-﻿using DataStructurePrograms.LinkedListOperation;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrderList.cs" company="Bridgelabz">
+//   Copyright © 2019 Company
+// </copyright>
+// <creator name="Satish Dodake"/>
+// -----------------------------------------------------------------------------------
 namespace DataStructurePrograms
 {
-   public class OrderList
+    using System;
+    using System.IO;
+    using DataStructurePrograms.LinkedListOperation;
+
+    /// <summary>
+    /// This is Order List Class.
+    /// </summary>
+    public class OrderList
     {
+        /// <summary>
+        /// Orders the list search.
+        /// </summary>
         public static void OrderListSearch()
         {
             StreamReader srteamReader = new StreamReader("C:\\Users\\Admin\\Desktop\\Satya\\readFileNumber.txt");
@@ -19,16 +27,16 @@ namespace DataStructurePrograms
                 string[] stringArray = firstLine.Split(' ');
                 foreach (string item in stringArray)
                 {
-                    int number=0;
-                    Int32.TryParse(item,out number);
+                    int number = 0;
+                    int.TryParse(item, out number);
                     OrderLinkedList.AddOrder(number);
                 }
             }
+
             srteamReader.Close();
             OrderLinkedList.Print();
             Console.WriteLine("\nEnter Number To Search");
             int itemSearch = Convert.ToInt32(Console.ReadLine());
-           // object dataObject = (object)Convert.ChangeType(itemSearch, typeof(object));
             if (OrderLinkedList.Search(itemSearch))
             {
                 OrderLinkedList.Remove(itemSearch);
@@ -37,7 +45,6 @@ namespace DataStructurePrograms
             {
                 OrderLinkedList.AddOrder(itemSearch);
             }
-           
         }
     }
 }

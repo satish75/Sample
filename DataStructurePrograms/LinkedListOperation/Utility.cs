@@ -13,7 +13,10 @@ namespace DataStructurePrograms.LinkedListOperation
     /// </summary>
     public class Utility
     {
-        public static Node head;
+        /// <summary>
+        /// The head node stored the address of start node.
+        /// </summary>
+        public static Node Head;
 
         /// <summary>
         /// Adds the specified data.
@@ -22,22 +25,20 @@ namespace DataStructurePrograms.LinkedListOperation
         public static void Add(object data)
         {
             Node newNode = new Node();
-            Node tempNode = head;
-            newNode.data = data;
-            if (head == null)
-            {
-              
-                head = newNode;
+            Node tempNode = Head;
+            newNode.Data = data;
+            if (Head == null)
+            {              
+                Head = newNode;
             }
             else
             {
-                while (tempNode.next!= null)
+                while (tempNode.Next != null)
                 {
-                    tempNode = tempNode.next;
+                    tempNode = tempNode.Next;
                 }
              
-                tempNode.next = newNode;
-
+                tempNode.Next = newNode;
             }
         }
 
@@ -46,34 +47,34 @@ namespace DataStructurePrograms.LinkedListOperation
         /// </summary>
         public static void Print()
         {
-
-            Node tempNode = head;
-
+            Node tempNode = Head;
             while (tempNode != null)
             {
-                Console.Write(" " + tempNode.data);
-                tempNode = tempNode.next;
+                Console.Write(" " + tempNode.Data);
+                tempNode = tempNode.Next;
             }
         }
+
         /// <summary>
-        /// Adds the first.
+        /// Add the first.
         /// </summary>
         /// <param name="data">The data.</param>
         public static void AddFirst(object data)
         {
             Node newNode = new Node();
-            newNode.data = data;
-            if (head == null)
+            newNode.Data = data;
+            if (Head == null)
             {
-                newNode.next = head;
-                head = newNode;
+                newNode.Next = Head;
+                Head = newNode;
             }
             else
             {
-                newNode.next = head;
-                head = newNode;
+                newNode.Next = Head;
+                Head = newNode;
             }
         }
+
         /// <summary>
         /// Appends the specified data.
         /// </summary>
@@ -81,25 +82,34 @@ namespace DataStructurePrograms.LinkedListOperation
         public static void Append(object data)
         {
             Node newNode = new Node();
-            newNode.data = data;
-            Node tempNode = head;
-            while (tempNode.next != null)
+            newNode.Data = data;
+            Node tempNode = Head;
+            try
             {
-                tempNode = tempNode.next;
+                while (tempNode.Next != null)
+                {
+                    tempNode = tempNode.Next;
+                }
+
+                tempNode.Next = newNode;
             }
-            newNode.next = tempNode.next;
-            tempNode.next = newNode;
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(" " + e);
+            }
         }
+
         /// <summary>
         /// Inserts the specified data.
         /// </summary>
         /// <param name="data">The data.</param>
+        /// <param name="position">The position.</param>
         public static void Insert(object data, int position)
         {
             Node newNode = new Node();
-            Node toCheckPosition = head;
-            Node tempNode = head;
-            newNode.data = data;
+            Node toCheckPosition = Head;
+            Node tempNode = Head;
+            newNode.Data = data;
             int count = 0;
             bool isValidePosition = false;
             while (toCheckPosition != null)
@@ -108,20 +118,21 @@ namespace DataStructurePrograms.LinkedListOperation
                 {
                     isValidePosition = true;
                     break;
-
                 }
-                count++; toCheckPosition = toCheckPosition.next;
 
+                count++;
+                toCheckPosition = toCheckPosition.Next;
             }
 
             if (isValidePosition)
             {
                 for (int i = 0; i < position - 2; i++)
                 {
-                    tempNode = tempNode.next;
+                    tempNode = tempNode.Next;
                 }
-                newNode.next = tempNode.next;
-                tempNode.next = newNode;
+
+                newNode.Next = tempNode.Next;
+                tempNode.Next = newNode;
             }
             else
             {
@@ -129,32 +140,35 @@ namespace DataStructurePrograms.LinkedListOperation
                 Console.WriteLine("\nPlease Enter New  Position :");
                 position = Convert.ToInt32(Console.ReadLine());
                 Insert(data, position);
-
             }
-
-
-
         }
+
         /// <summary>
-        /// Sizes this instance.
+        /// Size this instance.
         /// </summary>
+        /// <returns>it return size</returns>
         public static int Size()
         {
-            Node tempNode = head;
+            Node tempNode = Head;
             int size = 0;
             while (tempNode != null)
             {
                 size++;
-                tempNode = tempNode.next;
-
+                tempNode = tempNode.Next;
             }
+
             return size;
         }
 
+        /// <summary>
+        /// Determine whether this instance is empty.
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if this instance is empty; otherwise, <c>false</c>.
+        /// </returns>
         public static bool IsEmpty()
         {
-
-            if (head == null)
+            if (Head == null)
             {
                 return true;
             }
@@ -165,74 +179,75 @@ namespace DataStructurePrograms.LinkedListOperation
         }
 
         /// <summary>
-        /// Searches the specified search item.
+        /// Search the specified search item.
         /// </summary>
         /// <param name="searchItem">The search item.</param>
-        /// <returns></returns>
+        /// <returns>it return search item</returns>
         public static bool Search(object searchItem)
         {
-            Node tempNode = head;
+            Node tempNode = Head;
             while (tempNode != null)
             {
-                if (tempNode.data.Equals(searchItem))
+                if (tempNode.Data.Equals(searchItem))
                 {
-
                     return true;
                 }
-                tempNode = tempNode.next;
+
+                tempNode = tempNode.Next;
             }
+
             return false;
         }
 
         /// <summary>
-        /// Indexes the specified search item.
+        /// Index the specified search item.
         /// </summary>
         /// <param name="searchItem">The search item.</param>
-        /// <returns></returns>
+        /// <returns>it return the index value</returns>
         public static int Index(object searchItem)
         {
-            Node tempNode = head;
+            Node tempNode = Head;
             int index = 0;
             while (tempNode != null)
             {
-                if (tempNode.data.Equals(searchItem))
+                if (tempNode.Data.Equals(searchItem))
                 {
                     return index;
                 }
-                tempNode = tempNode.next;
+
+                tempNode = tempNode.Next;
                 index++;
             }
+
             return -1;
         }
+
         /// <summary>
-        /// Removes the specified remove item.
+        /// Remove the specified remove item.
         /// </summary>
         /// <param name="removeItem">The remove item.</param>
         public static void Remove(object removeItem)
         {
-            Node tempNode = head;
-            Node prevNode=head;
+            Node tempNode = Head;
+            Node prevNode = Head;
             bool found = false;
-           // Node storedAddress ;
             while (tempNode != null)
             {
-                if (tempNode.data.Equals(removeItem))
+                if (tempNode.Data.Equals(removeItem))
                 {
-                  
-                    if(tempNode==head)
+                    if (tempNode == Head)
                     {
-                        head = head.next;
-                       
+                        Head = Head.Next;                       
                         return;
                     }
-                    prevNode.next = tempNode.next;
-                   // tempNode.next = null;
+
+                    prevNode.Next = tempNode.Next;
                     found = true;
                     break;
                 }
-                prevNode = tempNode;
-                tempNode = tempNode.next;
 
+                prevNode = tempNode;
+                tempNode = tempNode.Next;
             }
           
            if (!found)
@@ -244,45 +259,44 @@ namespace DataStructurePrograms.LinkedListOperation
                 Remove(removeItem);
             }
         }
+
         /// <summary>
-        /// Pops The Element from stack .
+        /// Pop The Element from stack .
         /// </summary>
-        /// <returns></returns>
         public static void Pop()
         {
-
-            Node tempNode = head;
-            Node prevNode = head;
-          if(tempNode==null)
+            Node tempNode = Head;
+            Node prevNode = Head;
+          if (tempNode == null)
             {
                 Console.WriteLine("UnderFlow");
             }
-          else if(tempNode.next==null)
+          else if (tempNode.Next == null)
             {
-                head = null;
+                Head = null;
             }
           else
             {
-                while(tempNode.next !=null)
+                while (tempNode.Next != null)
                 {
                     prevNode = tempNode;
-                    tempNode = tempNode.next;
+                    tempNode = tempNode.Next;
                 }
-                prevNode.next = null;
+
+                prevNode.Next = null;
             }
-          
-           // return tempNode.data;
         }
+
         /// <summary>
-        /// Pops this instance.
+        /// Pops the specified position.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="position">The position.</param>
+        /// <returns>it delete top item</returns>
         public static object Pop(int position)
         {
-
-            Node tempNode = head;
-            Node prevNode = head;
-            Node toCheckPosition = head;
+            Node tempNode = Head;
+            Node prevNode = Head;
+            Node toCheckPosition = Head;
             int pos = 0;
             int count = 1;
             bool isValidePosition = false;
@@ -292,28 +306,29 @@ namespace DataStructurePrograms.LinkedListOperation
                 {
                     isValidePosition = true;
                     break;
-
                 }
-                pos++; toCheckPosition = toCheckPosition.next;
 
+                pos++;
+                toCheckPosition = toCheckPosition.Next;
             }
 
             if (isValidePosition)
             {
-                while (tempNode.next != null)
+                while (tempNode.Next != null)
                 {
-
                     if (count == position)
                     {
                         break;
                     }
+
                     count++;
                     prevNode = tempNode;
-                    tempNode = tempNode.next;
+                    tempNode = tempNode.Next;
                 }
-                prevNode.next = tempNode.next;
-                tempNode.next = null;
-                return tempNode.data;
+
+                prevNode.Next = tempNode.Next;
+                tempNode.Next = null;
+                return tempNode.Data;
             }
             else
             {
@@ -322,20 +337,22 @@ namespace DataStructurePrograms.LinkedListOperation
                 position = Convert.ToInt32(Console.ReadLine());
                 return Pop(position);
             }
-
         }
 
+        /// <summary>
+        /// Peek this instance.
+        /// </summary>
+        /// <returns>it return top item</returns>
         public static object Peek()
         {
-
-            Node tempNode = head;
-            Node prevNode = head;
-            while (tempNode.next != null)
+            Node tempNode = Head;
+            Node prevNode = Head;
+            while (tempNode.Next != null)
             {
-                tempNode = tempNode.next;
+                tempNode = tempNode.Next;
             }
-            return tempNode.data;
-        }
 
+            return tempNode.Data;
+        }
     }
 }

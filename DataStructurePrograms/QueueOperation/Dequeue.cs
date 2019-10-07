@@ -1,43 +1,77 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataStructurePrograms.QueueOperation;
-using DataStructurePrograms.LinkedListOperation;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Dequeue.cs" company="Bridgelabz">
+//   Copyright © 2019 Company
+// </copyright>
+// <creator name="Satish Dodake"/>
+// -----------------------------------------------------------------------------------
 namespace DataStructurePrograms.QueueOperation
 {
+    using System;
+    using DataStructurePrograms.LinkedListOperation;
+    using DataStructurePrograms.QueueOperation;
+  
+    /// <summary>
+    /// This is Double ended Queue class.
+    /// </summary>
     public class Dequeue
     {
+        /// <summary>
+        /// This method add the item at first.
+        /// </summary>
+        /// <param name="item">it add item into queue</param>
         public static void AddFront(object item)
         {    
                 LinkedList.AddFirst(item);
         }
+
+        /// <summary>
+        ///  This method add the item at last.
+        /// </summary>
+        /// <param name="item">it add item</param>
         public static void AddRear(object item)
         {
             LinkedList.Append(item);
         }
+
+        /// <summary>
+        ///  This method remove the item at first.
+        /// </summary>
         public static void RemoveFront()
         {
-            Node frontItem = LinkedListOperation.Utility.head;
-            LinkedListOperation.Utility.head= LinkedListOperation.Utility.head.next;
+            Node frontItem = LinkedListOperation.Utility.Head;
+            LinkedListOperation.Utility.Head = LinkedListOperation.Utility.Head.Next;
         }
+
+        /// <summary>
+        ///  This method remove the item at last.
+        /// </summary>
+        /// <returns>it return remove object</returns>
         public static object RemoveRear()
         {
-            Node frontItem = LinkedListOperation.Utility.head;
+            Node frontItem = LinkedListOperation.Utility.Head;
             Node prevNode = frontItem;
-            while(frontItem.next !=null)
+            if (LinkedListOperation.Utility.Head == null)
+            {
+                return -1;
+            }
+
+            while (frontItem.Next != null)
             {
                 prevNode = frontItem;
-                frontItem = frontItem.next;
+                frontItem = frontItem.Next;
             }
-            prevNode.next = null;
-            return frontItem.data;
 
+            prevNode.Next = null;
+            return frontItem.Data;
         }
+
+        /// <summary>
+        /// This method check queue is empty or not.
+        /// </summary>
+        /// <returns>it return boolean value</returns>
         public static bool IsEmpty()
         {
-            if(LinkedList.IsEmpty())
+            if (LinkedList.IsEmpty())
             {
                 return true;
             }
@@ -46,6 +80,11 @@ namespace DataStructurePrograms.QueueOperation
                 return false;
             }
         }
+
+        /// <summary>
+        /// this method return size of queue.
+        /// </summary>
+        /// <returns>it return size</returns>
         public static int Size()
         {
             return LinkedList.Size();

@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="BankingCashCounter.cs" />
     <Compile Include="HashingFunction.cs" />
-    <Compile Include="LinkedListOperation\BalancedParentheses.cs" />
+    <Compile Include="BalancedParentheses.cs" />
     <Compile Include="LinkedListOperation\LinkedList.cs" />
     <Compile Include="LinkedListOperation\OrderLinkedList.cs" />
     <Compile Include="LinkedListOperation\Utility.cs" />
@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueueOperation\Dequeue.cs" />
     <Compile Include="QueueOperation\Queue.cs" />
+    <Compile Include="QueueOperation\Utility.cs" />
     <Compile Include="StackOperation\Stack.cs" />
     <Compile Include="StackOperation\Utility.cs" />
     <Compile Include="UnOrderedList.cs" />
